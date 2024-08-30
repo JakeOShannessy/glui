@@ -52,7 +52,7 @@ SET(GLUI_SRCS
 add_library(glui_obj OBJECT ${GLUI_SRCS})
 target_include_directories(glui_obj
       PUBLIC
-      "$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>"
+      "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
       ${OPENGL_INCLUDE_DIR}
       ${GLUT_INCLUDE_DIR})
 # we need to enable -fPIC this so that the same object code can be used to
@@ -62,7 +62,7 @@ set_target_properties( glui_obj PROPERTIES POSITION_INDEPENDENT_CODE 1)
 add_library(glui SHARED $<TARGET_OBJECTS:glui_obj>)
 target_include_directories(glui
       PUBLIC
-      "$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>"
+      "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
       "$<INSTALL_INTERFACE:include>"
       ${OPENGL_INCLUDE_DIR}
       ${GLUT_INCLUDE_DIR})
@@ -75,7 +75,7 @@ set_target_properties(glui PROPERTIES
 add_library(glui_static STATIC $<TARGET_OBJECTS:glui_obj>)
 target_include_directories(glui_static
       PUBLIC
-      "$<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>"
+      "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
       "$<INSTALL_INTERFACE:include>"
       ${OPENGL_INCLUDE_DIR}
       ${GLUT_INCLUDE_DIR})
@@ -141,7 +141,7 @@ install(
 
 # Headers:
 install(
-    DIRECTORY "${CMAKE_SOURCE_DIR}/include/"
+    DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/include/"
     DESTINATION "${include_install_dir}"
     FILES_MATCHING PATTERN "*.h"
 )
